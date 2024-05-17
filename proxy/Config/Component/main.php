@@ -25,7 +25,7 @@ return [
     ],
     'webSocketClient' => [
         'class' => WebSocketClient::class,
-        'host' => 'localhost',
+        'host' => '0.0.0.0',
         'port' => 8080,
         'url' => ''
     ],
