@@ -1,0 +1,44 @@
+{
+  "name": "uzdevid/gport",
+  "description": "Share local port in global",
+  "keywords": [],
+  "homepage": "https://gport.uz",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.3",
+    "yiisoft/yii2": "~2.0.49",
+    "vlucas/phpdotenv": "^5.5",
+    "ramsey/uuid": "^4.7",
+    "ext-fileinfo": "*",
+    "yiisoft/yii2-queue": "^2.3",
+    "yiisoft/yii2-redis": "^2.0.18",
+    "uzdevid/yii2-property-loader": "1.2.1",
+    "firebase/php-jwt": "^6.10.0",
+    "yiisoft/hydrator": "^1.1.0",
+    "guzzlehttp/guzzle": "^7.8",
+    "uzdevid/yii2-websocket": "dev-main",
+    "ext-zlib": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "yiisoft/yii2-debug": "~2.1.0",
+    "yiisoft/yii2-gii": "~2.2.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    },
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}

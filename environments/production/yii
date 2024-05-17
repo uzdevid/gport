@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Yii console bootstrap file.
+ */
+
+require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/yiisoft/yii2/Yii.php';
+require __DIR__ . '/common/Config/bootstrap.php';
+require __DIR__ . '/console/Config/bootstrap.php';
+
+$config = yii\helpers\ArrayHelper::merge(
+    require __DIR__ . '/common/Config/main.php',
+    require __DIR__ . '/common/Config/Local/main.php',
+    require __DIR__ . '/console/Config/main.php',
+    require __DIR__ . '/console/Config/Local/main.php'
+);
+
+$application = new yii\console\Application($config);
+$exitCode = $application->run();
+exit($exitCode);

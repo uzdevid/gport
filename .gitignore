@@ -1,0 +1,10 @@
+# phpstorm project files
+.idea
+
+# composer vendor dir
+/vendor
+
+# Open Server Panel
+/.osp
+
+.env
