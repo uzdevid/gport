@@ -17,7 +17,7 @@ class AppController extends Controller {
      * @throws NotFoundHttpException
      */
     public function actionIndex(): void {
-        $sharing = Sharing::find()->where(['remote_address' => $_SERVER['SERVER_NAME']])->orderBy(['created_time' => SORT_DESC])->one();
+        $sharing = Sharing::find()->where(['remote_address' => $_SERVER['HTTP_HOST'], 'is_active' => true])->orderBy(['created_time' => SORT_DESC])->one();
 
         if (is_null($sharing)) {
             throw new NotFoundHttpException(NotFound::PROXY_NOT_FOUND);
