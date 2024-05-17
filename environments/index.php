@@ -4,15 +4,13 @@ return [
         'path' => 'development',
         'setWritable' => [
             'console/runtime',
-            //
-            'mobile/runtime',
-            'mobile/Rest/assets',
+            'socket/runtime',
             //
             'core/runtime',
             'core/Rest/assets',
             //
-            'admin/runtime',
-            'admin/Rest/assets',
+            'proxy/runtime',
+            'proxy/Web/assets',
         ],
         'setExecutable' => ['yii'],
     ],
@@ -20,15 +18,13 @@ return [
         'path' => 'production',
         'setWritable' => [
             'console/runtime',
-            //
-            'mobile/runtime',
-            'mobile/Rest/assets',
+            'socket/runtime',
             //
             'core/runtime',
             'core/Rest/assets',
             //
-            'admin/runtime',
-            'admin/Rest/assets',
+            'proxy/runtime',
+            'proxy/Web/assets',
         ],
         'setExecutable' => ['yii'],
     ],
