@@ -7,7 +7,7 @@ return [
     ],
     'timezone' => 'UTC',
     'defaultRoute' => 'app',
-    'bootstrap' => [],
+    'bootstrap' => ['log'],
     'vendorPath' => dirname(__DIR__, 2) . '/vendor',
     'components' => require __DIR__ . '/Component/main.php',
 ];
