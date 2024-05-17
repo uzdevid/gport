@@ -13,6 +13,8 @@ COPY . .
 # PHP config
 COPY zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
+RUN docker-php-ext-install pcntl
+
 RUN apk add supervisor
 
 RUN composer install
