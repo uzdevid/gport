@@ -17,6 +17,8 @@ services:
     build: ./
     container_name: gport-api
     restart: always
+    ports:
+      - "7130:8080"
     volumes:
       - ./.env:/var/www/.env
       - code:/var/www
