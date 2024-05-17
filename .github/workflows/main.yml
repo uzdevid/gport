@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: 22
+          script: |
+            cd /var/www/uzdevid/tools/gport/api
+            git pull origin main
+            docker stop "${{ vars.CONTAINER_NAME }}-nginx" || true
+            docker rm "${{ vars.CONTAINER_NAME }}-nginx" || true
+            docker stop "${{ vars.CONTAINER_NAME }}" || true
+            docker rm "${{ vars.CONTAINER_NAME }}" || true
+            docker rmi "${{ vars.CONTAINER_NAME }}-app" || true
+            docker volume rm "${{ vars.CONTAINER_NAME }}_code" || true
+            docker-compose -p ${{github.event.repository.name}} up -d
