@@ -16,9 +16,9 @@ return [
     'bootstrap' => [EventHandler::class],
     'webSocketServer' => [
         'class' => WebSocketServer::class,
-        'host' => 'localhost',
+        'host' => '0.0.0.0',
         'port' => 8080,
-        'count' => 1
+        'count' => 20
     ],
     'components' => require __DIR__ . '/Component/main.php',
     'params' => $params,
