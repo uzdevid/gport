@@ -25,9 +25,9 @@ return [
     ],
     'webSocketClient' => [
         'class' => WebSocketClient::class,
-        'host' => '0.0.0.0',
-        'port' => 8080,
-        'url' => ''
+        'host' => 'gport.uzdevid.com',
+        'port' => 443,
+        'url' => 'wss'
     ],
     'assetManager' => [
         'class' => AssetManager::class,
