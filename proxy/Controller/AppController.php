@@ -27,12 +27,6 @@ class AppController extends Controller {
 
         $client = Yii::$app->webSocketClient;
 
-//        Yii::$app->queue->push(new CallLocalAddress($client, [
-//            'connectionId' => $sharing->connection_id,
-//            'requestId' => $requestId,
-//            'address' => $sharing->local_address . $_SERVER['REQUEST_URI'],
-//        ]));
-
         $client->send('local-client:call-address', [
             'connectionId' => $sharing->connection_id,
             'requestId' => $requestId,
