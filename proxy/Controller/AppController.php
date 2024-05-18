@@ -34,9 +34,9 @@ class AppController extends Controller {
             'address' => $sharing->local_address . $_SERVER['REQUEST_URI'],
         ]));
 
-        $client->client->setTimeout(60);
+        $client->client->setTimeout(40);
 
-        $timeout = 60;
+        $timeout = 40;
         $startedAt = time();
 
         while (true) {
