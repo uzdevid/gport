@@ -12,7 +12,7 @@ $params = array_merge(
 return [
     'id' => 'gport-proxy',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', ClientLanguage::class],
+    'bootstrap' => [ClientLanguage::class],
     'controllerNamespace' => 'proxy\Controller',
     'defaultRoute' => 'app',
     'modules' => require __DIR__ . '/modules.php',
