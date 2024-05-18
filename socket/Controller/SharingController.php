@@ -35,7 +35,7 @@ class SharingController extends Controller {
         ]);
 
         Timer::add(5, static function () use ($client) {
-            $client->user->send("LocalClient:is-online", []);
+            $client->user->send("LocalClient:is-online", [date('Y-m-d H:i:s')]);
         });
     }
 }
