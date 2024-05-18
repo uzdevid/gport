@@ -58,9 +58,6 @@ return [
     'urlManager' => [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
-        'rules' => [
-            '<module>/<controller>/<action>' => 'app/index',
-            '<url:.+>' => 'app/index'
-        ],
+        'rules' => [],
     ],
 ];

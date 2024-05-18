@@ -15,6 +15,7 @@ return [
     'bootstrap' => [ClientLanguage::class],
     'controllerNamespace' => 'proxy\Controller',
     'defaultRoute' => 'app',
+    'catchAll' => ['app/index'],
     'modules' => require __DIR__ . '/modules.php',
     'components' => require __DIR__ . '/Component/main.php',
     'params' => $params,
