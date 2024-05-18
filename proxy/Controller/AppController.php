@@ -35,7 +35,7 @@ class AppController extends Controller {
             'request' => [
                 'method' => Yii::$app->request->method,
                 'headers' => Yii::$app->request->headers->toArray(),
-                'body' => Yii::$app->request->post()
+                'body' => Yii::$app->request->post() ?? null
             ]
         ]);
 
