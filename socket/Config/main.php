@@ -18,7 +18,7 @@ return [
         'class' => WebSocketServer::class,
         'host' => '0.0.0.0',
         'port' => 8080,
-        'count' => 20
+        'count' => 100
     ],
     'components' => require __DIR__ . '/Component/main.php',
     'params' => $params,
