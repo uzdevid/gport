@@ -25,6 +25,7 @@ return [
     ],
     'webSocketClient' => [
         'class' => WebSocketClient::class,
+        'protocol' => 'wss',
         'host' => 'gport.uzdevid.com',
         'port' => 443,
         'url' => 'wss'
