@@ -2,17 +2,16 @@
 
 namespace proxy\Queue;
 
-use WebSocket\BadOpcodeException;
-use WebSocket\Client;
+use UzDevid\WebSocket\Client\WebSocketClient;
 use yii\queue\JobInterface;
 
 readonly final class CallLocalAddress implements JobInterface {
     /**
-     * @param Client $client
+     * @param WebSocketClient $client
      * @param array $payload
      */
     public function __construct(
-        private Client $client,
+        private WebSocketClient $client,
         private array  $payload
     ) {
     }
@@ -20,7 +19,6 @@ readonly final class CallLocalAddress implements JobInterface {
     /**
      * @param $queue
      * @return void
-     * @throws BadOpcodeException
      */
     public function execute($queue): void {
         $this->client->send('local-client:call-address', $this->payload);
