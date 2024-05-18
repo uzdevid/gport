@@ -27,5 +27,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p runtime/logs/supervisor/
+RUN mkdir -p runtime/logs/queue/
 
 CMD ["/usr/bin/supervisord"]
