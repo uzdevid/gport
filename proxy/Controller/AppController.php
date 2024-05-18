@@ -8,7 +8,6 @@ use common\Model\Sharing;
 use Ramsey\Uuid\Uuid;
 use Yii;
 use yii\helpers\Json;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -46,21 +45,15 @@ class AppController extends Controller {
         $startedAt = time();
 
         while (true) {
-            if (!$client->client->isConnected()) {
-                throw new BadRequestHttpException('Not connected');
-            }
-
             $json = Json::decode($client->client->receive());
 
-            if ($json['payload']['requestId'] !== $requestId) {
-                continue;
+            if ($json['payload']['requestId'] === $requestId) {
+                break;
             }
 
             if (time() > ($startedAt + $timeout)) {
                 throw new NotFoundHttpException(NotFound::RESOURCE_NOT_FOUND);
             }
-
-            break;
         }
 
         $contentType = $json['payload']['content']['type'];
