@@ -5,10 +5,10 @@ namespace proxy\Controller;
 use common\Exception\Message\NotFound;
 use common\Exception\NotFoundHttpException;
 use common\Model\Sharing;
-use proxy\Queue\CallLocalAddress;
 use Ramsey\Uuid\Uuid;
 use Yii;
 use yii\helpers\Json;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -46,6 +46,10 @@ class AppController extends Controller {
         $startedAt = time();
 
         while (true) {
+            if (!$client->client->isConnected()) {
+                throw new BadRequestHttpException('Not connected');
+            }
+
             $json = Json::decode($client->client->receive());
 
             if ($json['payload']['requestId'] !== $requestId) {
