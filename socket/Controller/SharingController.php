@@ -34,8 +34,8 @@ class SharingController extends Controller {
             'localAddress' => $sharing->local_address,
         ]);
 
-//        Timer::add(0.5, static function () use ($client) {
-//            $client->user->send("LocalClient:is-online", []);
-//        });
+        Timer::add(0.5, static function () use ($client) {
+            $client->user->send("LocalClient:is-online", []);
+        });
     }
 }

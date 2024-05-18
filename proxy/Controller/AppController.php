@@ -5,6 +5,7 @@ namespace proxy\Controller;
 use common\Exception\Message\NotFound;
 use common\Exception\NotFoundHttpException;
 use common\Model\Sharing;
+use proxy\Queue\CallLocalAddress;
 use Ramsey\Uuid\Uuid;
 use Yii;
 use yii\helpers\Json;
@@ -25,17 +26,21 @@ class AppController extends Controller {
 
         $requestId = Uuid::uuid4()->toString();
 
-        Yii::$app->webSocketClient->send('local-client:call-address', [
+        $client = Yii::$app->webSocketClient;
+
+        Yii::$app->queue->push(new CallLocalAddress($client, [
             'connectionId' => $sharing->connection_id,
             'requestId' => $requestId,
             'address' => $sharing->local_address . $_SERVER['REQUEST_URI'],
-        ]);
+        ]));
+
+        $client->client->setTimeout(60);
 
         $timeout = 60;
         $startedAt = time();
 
         while (true) {
-            $json = Json::decode(Yii::$app->webSocketClient->client->receive());
+            $json = Json::decode($client->client->receive());
 
             if ($json['payload']['requestId'] !== $requestId) {
                 continue;
