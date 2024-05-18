@@ -56,6 +56,12 @@ class AppController extends Controller {
             }
         }
 
+        if (!isset($json['payload']['content'])) {
+            echo "<pre>";
+            print_r($json);
+            die;
+        }
+
         $contentType = $json['payload']['content']['type'];
 
         $content = gzdecode(base64_decode($json['payload']['content']['base64']));
