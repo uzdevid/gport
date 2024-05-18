@@ -34,7 +34,7 @@ class AppController extends Controller {
             'address' => $sharing->local_address . $_SERVER['REQUEST_URI'] . "?" . http_build_query(Yii::$app->request->queryParams),
             'request' => [
                 'method' => Yii::$app->request->method,
-                'headers' => Yii::$app->request->headers,
+                'headers' => Yii::$app->request->headers->toArray(),
                 'body' => Yii::$app->request->post()
             ]
         ]);
