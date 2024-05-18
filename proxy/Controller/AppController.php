@@ -32,6 +32,11 @@ class AppController extends Controller {
             'requestId' => $requestId,
             //
             'address' => $sharing->local_address . $_SERVER['REQUEST_URI'] . "?" . http_build_query(Yii::$app->request->queryParams),
+            'request' => [
+                'method' => Yii::$app->request->method,
+                'headers' => Yii::$app->request->headers,
+                'body' => Yii::$app->request->post()
+            ]
         ]);
 
         $client->client->setTimeout(40);

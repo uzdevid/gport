@@ -19,7 +19,7 @@ class SharingController extends Controller {
 
         $sharing->key = strtolower(Yii::$app->security->generateRandomString(4));
         $sharing->user_id = Uuid::uuid4()->toString();
-        $sharing->connection_id = $client->tcp->worker->id;
+        $sharing->connection_id = $client->id;
         $sharing->remote_address = sprintf('%s.gport.uzdevid.com', $sharing->key);
         $sharing->local_address = $payload['localAddress'];
         $sharing->active = 0;
